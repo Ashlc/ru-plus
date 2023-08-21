@@ -6,7 +6,10 @@ function Button({ text, func }) {
 			type="button"
 			onClick={func}
 			className="w-full flex justify-center items-center border
-      border-white rounded-2xl h-10 text-white font-bold text-md focus:outline-stdorange active:bg-white active:text-stdblue">
+      		border-white rounded-2xl h-10 text-white font-bold text-md
+	  		focus:outline-stdorange
+	  		active:bg-whiteactive:text-stdblue
+			disabled:bg-silver disabled:text-white">
 			<p className="select-none">{text}</p>
 		</button>
 	);

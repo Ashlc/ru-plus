@@ -2,10 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-html {
-	background-color: #005ca9;
-}
-
 * {
 	-webkit-tap-highlight-color: transparent;
 }

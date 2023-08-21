@@ -25,7 +25,7 @@ function Landing() {
 	};
 
 	return (
-		<div className="flex justify-center w-full h-screen">
+		<div className="flex justify-center w-full h-screen bg-stdblue">
 			<div className="flex flex-col justify-center items-center text-center gap-10">
 				<div className="gap-2 flex flex-col justify-center items-center">
 					<img src={logo} alt="" className="w-36" />

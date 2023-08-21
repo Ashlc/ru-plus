@@ -14,14 +14,10 @@ function Form() {
 			id: "phone",
 			text: "CELULAR",
 		},
-		{
-			id: "password",
-			text: "SENHA",
-		},
 	];
 
 	const fields = data.map((e) => (
-		<div className="flex flex-col w-full">
+		<div key={e.id} className="flex flex-col w-full">
 			<div className="flex flex-col w-full gap-1">
 				<label htmlFor={e.id} className="text-white text-sm">
 					{e.text}
