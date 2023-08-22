@@ -5,14 +5,26 @@ function Form() {
 		{
 			id: "fullname",
 			text: "NOME COMPLETO",
+			type: "text",
+			placeholder: ""
 		},
 		{
 			id: "email",
 			text: "EMAIL",
+			type: "email",
+			placeholder: "pessoa@email.com"
 		},
 		{
 			id: "phone",
 			text: "CELULAR",
+			type: "number",
+			placeholder: "82999999999"
+		},
+		{
+			id: "password",
+			text: "SENHA",
+			type: "password",
+			placeholder: ""
 		},
 	];
 
@@ -24,8 +36,9 @@ function Form() {
 				</label>
 				<input
 					id={e.id}
-					type="text"
-					className="text-midnight rounded-md h-8 px-2 border-silver border focus:outline-stdorange"
+					type={e.type}
+					placeholder={e.placeholder}
+					className="text-midnight rounded-md h-8 px-2 border-silver border focus:outline-stdorange text-sm"
 				/>
 			</div>
 		</div>

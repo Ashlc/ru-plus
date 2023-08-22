@@ -5,25 +5,26 @@ import Form from "./Form";
 import { User } from "./User";
 import Button from "../../components/Button/Button";
 import "primeicons/primeicons.css";
-import "primereact/resources/themes/tailwind-light/theme.css";
 
 function SignUp() {
 	const [file, setFile] = useState("");
 	const [fileSize, setFileSize] = useState("");
 	const [display, setDisplay] = useState("hidden");
 	const [checked, setChecked] = useState(true);
+	const [invalidPhone, setInvalidPhone] = useState(false);
+	const [noFile, setNoFile] = useState(false);
 
 	const handleUpload = (e) => {
 		if (e.target.files.length !== 0) {
 			const doc = e.target.files[0];
 			setFile(doc);
-			const size = doc.size;
-			if (size >= 1000) {
-				setFileSize((size / 1000).toFixed(2) + "KB");
-			} else if (size >= 1000000) {
-				setFileSize((size / 1000000).toFixed(2) + "MB");
+			const size = file.size;
+			if (size <= 1000) {
+				setFileSize(size + " B");
+			} else if (size < 1000000) {
+				setFileSize((size / 1000).toFixed(2) + " KB");
 			} else {
-				setFileSize(size + "KB");
+				setFileSize((size / 1000000).toFixed(2) + " MB");
 			}
 			console.log(doc);
 		} else {
@@ -39,17 +40,50 @@ function SignUp() {
 		display === "hidden" ? setDisplay("block") : setDisplay("hidden");
 	};
 
+	const checkedTimeout = () => {
+		setChecked(true);
+	}
+
+	const phoneTimeout = () => {
+		setInvalidPhone(false);
+	}
+
+	const fileTimeout = () => {
+		setNoFile(false);
+	}
+
 	const handleSubmit = () => {
+
 		if (display === "hidden") {
 			setChecked(false);
+			setTimeout(checkedTimeout, 3000);
 			return;
 		}
 
-		const user = new User();
-		user.addFiles(file);
-		const data = user.getJSON();
+		if (!file) {
+			setNoFile(true);
+			setTimeout(fileTimeout, 3000);
+		}
 
-		console.log(data);
+		const phone = document.getElementById("phone").value;
+
+		if (phone.match(/^[0-9]+$/) && phone.length === 11) {
+
+			try {
+				const user = new User();
+				user.addFiles(file);
+				const data = user.getJSON();
+				console.log(data);
+
+			} catch (e) {
+				console.log(e);
+				return;
+			}
+
+		} else {
+			setInvalidPhone(true);
+			setTimeout(phoneTimeout, 3000)
+		}
 	};
 
 	return (
@@ -61,18 +95,6 @@ function SignUp() {
 				</div>
 				<hr className="border-white w-full" />
 				<Form />
-				<div className="flex flex-col w-full">
-					<div className="flex flex-col w-full gap-1">
-						<label htmlFor="password" className="text-white text-sm">
-							SENHA
-						</label>
-						<input
-							id="password"
-							type="password"
-							className="text-midnight rounded-md h-8 px-2 border-silver border focus:outline-stdorange"
-						/>
-					</div>
-				</div>
 				<div className="flex flex-col gap-1 w-full">
 					<label htmlFor="type" className="text-white text-sm">
 						TIPO DE COMPROVANTE DE VÍNCULO
@@ -83,15 +105,17 @@ function SignUp() {
 						className="text-midnight rounded-md h-8 px-2 border-silver border checked:outline-stdorange">
 						<option
 							value={null}
-							className="appearance-none text-midnight bg-white">
+							className="appearance-none text-midnight bg-white text-sm">
 							--
 						</option>
 						<option
 							value="student"
-							className="appearance-none text-midnight bg-white">
+							className="appearance-none text-midnight bg-white text-sm">
 							Matrícula
 						</option>
-						<option value="employee">Contra-cheque</option>
+						<option
+							value="employee"
+							className="appearance-none text-midnight bg-white text-sm">Contra-cheque</option>
 					</select>
 				</div>
 				<div className="flex flex-col gap-5">
@@ -126,7 +150,7 @@ function SignUp() {
 								</div>
 							</button>
 						</div>
-						<p className="text-white font-thin text-justify">
+						<p className="text-white font-thin text-justify text-sm">
 							Declaro que as informações acima prestadas são verdadeiras, e
 							assumo a inteira responsabilidade pelas mesmas sob as penas da Lei
 							(Artigo 299 do Código Penal).
@@ -137,6 +161,22 @@ function SignUp() {
 							<i className="pi pi-exclamation-triangle text-white" />
 							<p className="text-white text-justify font-light text-sm">
 								Você não pode avançar sem concordar com o termo acima.
+							</p>
+						</div>
+					)}
+					{invalidPhone && (
+						<div className="flex gap-3 border border-white p-5 rounded-lg">
+							<i className="pi pi-exclamation-triangle text-white" />
+							<p className="text-white text-justify font-light text-sm">
+								Insira um número de telefone válido.
+							</p>
+						</div>
+					)}
+					{noFile && (
+						<div className="flex gap-3 border border-white p-5 rounded-lg">
+							<i className="pi pi-exclamation-triangle text-white" />
+							<p className="text-white text-justify font-light text-sm">
+								Insira seus documentos.
 							</p>
 						</div>
 					)}
