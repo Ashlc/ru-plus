@@ -32,6 +32,21 @@ function SignUp() {
 		}
 	};
 
+	// PHONE MASK FROM https://www.ramoncp.com.br/snippets/mascara-de-telefone-para-input-em-js
+
+	const handlePhone = (e) => {
+		let input = e.target;
+		input.value = phoneMask(input.value);
+	};
+
+	const phoneMask = (value) => {
+		if (!value) return "";
+		value = value.replace(/\D/g, "");
+		value = value.replace(/(\d{2})(\d)/, "($1) $2");
+		value = value.replace(/(\d)(\d{4})$/, "$1-$2");
+		return value;
+	};
+
 	const handleClick = () => {
 		document.getElementById("documents").click();
 	};
@@ -42,18 +57,23 @@ function SignUp() {
 
 	const checkedTimeout = () => {
 		setChecked(true);
-	}
+	};
 
 	const phoneTimeout = () => {
 		setInvalidPhone(false);
-	}
+	};
 
 	const fileTimeout = () => {
 		setNoFile(false);
-	}
+	};
+
+	const handleTel = () => {
+		const phone = document.getElementById("phone").value.replace(/\D/g, "");
+		if (phone.length !== 11) return false;
+		else return true;
+	};
 
 	const handleSubmit = () => {
-
 		if (display === "hidden") {
 			setChecked(false);
 			setTimeout(checkedTimeout, 3000);
@@ -65,24 +85,19 @@ function SignUp() {
 			setTimeout(fileTimeout, 3000);
 		}
 
-		const phone = document.getElementById("phone").value;
-
-		if (phone.match(/^[0-9]+$/) && phone.length === 11) {
-
+		if (handleTel()) {
 			try {
 				const user = new User();
 				user.addFiles(file);
 				const data = user.getJSON();
 				console.log(data);
-
-			} catch (e) {
-				console.log(e);
+			} catch (error) {
+				console.error(error);
 				return;
 			}
-
 		} else {
 			setInvalidPhone(true);
-			setTimeout(phoneTimeout, 3000)
+			setTimeout(phoneTimeout, 3000);
 		}
 	};
 
@@ -94,7 +109,7 @@ function SignUp() {
 					<img src={logo} alt="" className="h-6" />
 				</div>
 				<hr className="border-white w-full" />
-				<Form />
+				<Form keyup={handlePhone} />
 				<div className="flex flex-col gap-1 w-full">
 					<label htmlFor="type" className="text-white text-sm">
 						TIPO DE COMPROVANTE DE VÍNCULO
@@ -102,7 +117,7 @@ function SignUp() {
 					<select
 						name="type"
 						id="type"
-						className="text-midnight rounded-md h-8 px-2 border-silver border checked:outline-stdorange">
+						className="text-midnight text-sm rounded-md h-8 px-2 border-silver border checked:outline-stdorange">
 						<option
 							value={null}
 							className="appearance-none text-midnight bg-white text-sm">
@@ -115,7 +130,9 @@ function SignUp() {
 						</option>
 						<option
 							value="employee"
-							className="appearance-none text-midnight bg-white text-sm">Contra-cheque</option>
+							className="appearance-none text-midnight bg-white text-sm">
+							Contra-cheque
+						</option>
 					</select>
 				</div>
 				<div className="flex flex-col gap-5">
