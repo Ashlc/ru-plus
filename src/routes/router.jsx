@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import Payment from "../pages/Payment/Payment";
 import Verify from "../pages/Verify/Verify";
 import Recover from "../pages/RecoverPassword/Recover";
+import AddCreditCard from "../pages/AddCredit-Card/addcredit-card";
 
 function Router() {
 	return (
@@ -17,6 +18,7 @@ function Router() {
 				<Route path="/pagar" element={<Payment />} />
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
+				<Route path="/addcredit/cartao" element={<AddCreditCard />} />
 			</Routes>
 		</BrowserRouter>
 	);
