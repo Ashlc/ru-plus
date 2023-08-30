@@ -1,13 +1,21 @@
 import React from "react";
 import "./Payment.css";
 import QRCode from "../../assets/ProxyQRCode.png"
+import Navigator from "../../components/Navigator/Navigator";
+import { useNavigate } from "react-router-dom";
 
 function Payment() {
+  const navigate = useNavigate();
   const mealType = "ALMOÇO";
   const price = 3.00;
 
+  const handleClick = () => {
+    navigate('/home');
+  }
+
   return (
     <div className="flex justify-center w-full h-screen white-page">
+      <Navigator />
       <div className="flex flex-col justify-center items-center text-center gap-7">
         <div className="flex flex-col justify-center items-center">
           {/*Tipo de comida e dinheiro*/}
@@ -31,7 +39,7 @@ function Payment() {
 
           <div className="flex flex-col justify-center items-center">
             {/*Cancelar Transação*/}
-            <button className="button-red mulish-font">CANCELAR TRANSAÇÃO</button>
+            <button className="button-red mulish-font" onClick={handleClick}>CANCELAR TRANSAÇÃO</button>
           </div>
         </div>
       </div>
