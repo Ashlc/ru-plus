@@ -11,7 +11,6 @@ import InsertCreditCard from "../pages/InsertCreditCard/insertcreditcard";
 import WaitingConfirmation from "../pages/WaitingConfirmation/waitingconf";
 import User from "../pages/User/User";
 
-
 function Router() {
 	return (
 		<BrowserRouter>
@@ -22,11 +21,13 @@ function Router() {
 				<Route path="/pagamento" element={<Payment />} />
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
-				<Route path="/addcredit/cartao" element={<AddCreditCard />} />
+				<Route path="/addcredit" element={<AddCreditCard />} />
 				<Route path="/inserir-cartao" element={<InsertCreditCard />} />
-				<Route path="/aguardando-confirmacao" element={<WaitingConfirmation />} />
+				<Route
+					path="/aguardando-confirmacao"
+					element={<WaitingConfirmation />}
+				/>
 				<Route path="/usuario" element={<User />} />
-
 			</Routes>
 		</BrowserRouter>
 	);
