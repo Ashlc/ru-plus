@@ -2,6 +2,7 @@ import React from "react";
 import HeaderAmount from "../../components/HeaderAmount/headeramount";
 import PaymentOptions from "../../components/PaymentOptions/paymentoptions";
 import navigateicon from "../../assets/navigate_next.svg";
+import { Link } from 'react-router-dom';
 
 
 function AddCreditCard(){
@@ -18,9 +19,11 @@ function AddCreditCard(){
                     <PaymentOptions />
                 </div>
                 <div className="border border-[#005CA9] rounded-3xl p-2 mt-7 w-5/6 text-[#005CA9] flex justify-center m-auto">
-                    <a href="www.google.com">
-                        <h1>AVANÇAR</h1>
-                    </a>
+                    <Link to="/inserir-cartao">
+                        <a>
+                            <h1>AVANÇAR</h1>
+                        </a>
+                    </Link>
                     <img src={navigateicon} className="ml-3"/>
                 </div>
             </div>
