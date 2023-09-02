@@ -1,5 +1,5 @@
 import React from "react";
-import "primeicons/primeicons.css";
+//import "primeicons/primeicons.css";
 
 function IconButton({ text, func, icon }) {
 	return (
