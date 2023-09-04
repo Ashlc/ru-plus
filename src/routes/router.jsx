@@ -25,7 +25,7 @@ function Router() {
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
 				<Route path="/inserir" element={<AddCredit />} />
-				<Route path="/inserir/cartaoCredito" element={<InsertCreditCard />} />
+				<Route path="/inserir/cartao" element={<InsertCreditCard />} />
 				<Route path="/inserir/boleto" element={<Boleto />} />
 				<Route path="/inserir/pix" element={<Pix />} />
 				<Route path="/confirmar" element={<WaitingConfirmation />} />

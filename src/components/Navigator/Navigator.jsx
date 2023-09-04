@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navigator.css";
-//import "primeicons/primeicons.css";
+import "primeicons/primeicons.css";
 
 function Navigator() {
 	return (
