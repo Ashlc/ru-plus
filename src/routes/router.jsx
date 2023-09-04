@@ -12,7 +12,9 @@ import Pix from "../pages/Pix/pix";
 import Boleto from "../pages/Boleto/boleto";
 import WaitingConfirmation from "../pages/WaitingConfirmation/waitingconf";
 import User from "../pages/User/User";
-
+import FailedPayment from "../pages/Payment/FailedPayment";
+import ChooseMeal from "../pages/Payment/ChooseMeal";
+import Extract from "../pages/Extract/Extract";
 
 function Router() {
 	return (
@@ -30,7 +32,9 @@ function Router() {
 				<Route path="/inserir/pix" element={<Pix />} />
 				<Route path="/confirmar" element={<WaitingConfirmation />} />
 				<Route path="/usuario" element={<User />} />
-
+				<Route path="/pagamento/erro" element={<FailedPayment />} />
+				<Route path="/pagamento/jantar" element={<ChooseMeal />} />
+				<Route path="/extrato" element={<Extract />} />
 			</Routes>
 		</BrowserRouter>
 	);
