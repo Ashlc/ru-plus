@@ -1,12 +1,25 @@
 import React from "react";
 
-function PriceNMeal({mealType, price}) {
+function PriceNMeal({mealType, price, white}) {
+    var colorMealType ="stdblue";
+    var color$ ="silver";
+    var colorMoney ="midnight";
+    if(white == true){
+        colorMealType ="white";
+        color$ ="white";
+        colorMoney ="white";      
+    }
+
+    const additionalClassesMealType= "text-base font-black";
+    const additionalClasses$ = "font-extrabold";
+    const additionalClassesMoney = "font-bold";
+
   return (
     <div className="flex flex-col justify-center items-center">
-        <p className="text-stdblue text-base font-black">{mealType}</p>
+        <p className={`text-${colorMealType} ${additionalClassesMealType}`}>{mealType}</p>
         <p className="font-bold text-3xl">
-        <span className="text-silver font-extrabold">R$ </span>
-        <span className="text-midnight font-bold">{price.toFixed(2).replace('.', ',')}</span>
+        <span className={`text-${color$} ${additionalClasses$}`}>R$ </span>
+        <span className={`text-${colorMoney} ${additionalClassesMoney}`}>{price.toFixed(2).replace('.', ',')}</span>
         </p>
     </div>
   );
