@@ -4,7 +4,7 @@ import logo from "../../assets/RUPLUS.svg";
 import Form from "./Form";
 import { User } from "./User";
 import Button from "../../components/Button/Button";
-import "primeicons/primeicons.css";
+//import "primeicons/primeicons.css";
 
 function SignUp() {
 	const [file, setFile] = useState("");
