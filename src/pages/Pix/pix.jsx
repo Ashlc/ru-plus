@@ -33,7 +33,7 @@ function Pix(){
                 {/* VOLTAR BUTTON */}
                 <div className="flex items-center justify-center w-10/12 h-36">
                     <p className="text-underline text-[#005CA9] text-xs font-normal">
-                        <Link to={`/addcredito`}>
+                        <Link to={`/inserir`}>
                             VOLTAR
                         </Link>
                     </p>

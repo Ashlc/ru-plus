@@ -12,6 +12,7 @@ import Pix from "../pages/Pix/pix";
 import Boleto from "../pages/Boleto/boleto";
 import WaitingConfirmation from "../pages/WaitingConfirmation/waitingconf";
 import User from "../pages/User/User";
+import Confirmation from "../pages/Confirmation/confirmation";
 
 
 function Router() {
@@ -30,7 +31,7 @@ function Router() {
 				<Route path="/inserir/pix" element={<Pix />} />
 				<Route path="/confirmar" element={<WaitingConfirmation />} />
 				<Route path="/usuario" element={<User />} />
-
+				<Route path="/confirmacao" element={<Confirmation />} />	
 			</Routes>
 		</BrowserRouter>
 	);

@@ -27,7 +27,8 @@ function AddCreditCard(){
                     <PaymentOptions className="flex items-center justify-center" onSelectOption={handleOptionChange}/>
                 </div>
                 <div className="border border-[#005CA9] rounded-3xl p-2 mt-7 w-5/6 text-[#005CA9] flex justify-center">
-                    <Link to={`/addcredito/${selectedOption}`}>
+                    <Link to={`/inserir/${selectedOption}`}>
+                        console.log(selectedOption);
                         <p>AVANÇAR</p>
                     </Link>
                         <img src={navigateicon} className="ml-3" alt="Avançar" />
