@@ -6,8 +6,10 @@ import Home from "../pages/Home/Home";
 import Payment from "../pages/Payment/Payment";
 import Verify from "../pages/Verify/Verify";
 import Recover from "../pages/RecoverPassword/Recover";
-import AddCreditCard from "../pages/AddCredit-Card/addcredit-card";
+import AddCredit from "../pages/AddCredit/addcredit";
 import InsertCreditCard from "../pages/InsertCreditCard/insertcreditcard";
+import Pix from "../pages/Pix/pix";
+import Boleto from "../pages/Boleto/boleto";
 import WaitingConfirmation from "../pages/WaitingConfirmation/waitingconf";
 import User from "../pages/User/User";
 
@@ -22,8 +24,10 @@ function Router() {
 				<Route path="/pagamento" element={<Payment />} />
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
-				<Route path="/addcredit/cartao" element={<AddCreditCard />} />
-				<Route path="/inserir-cartao" element={<InsertCreditCard />} />
+				<Route path="/addcredito" element={<AddCredit />} />
+				<Route path="/addcredito/cartaoCredito" element={<InsertCreditCard />} />
+				<Route path="/addcredito/boleto" element={<Boleto />} />
+				<Route path="/addcredito/pix" element={<Pix />} />
 				<Route path="/aguardando-confirmacao" element={<WaitingConfirmation />} />
 				<Route path="/usuario" element={<User />} />
 
