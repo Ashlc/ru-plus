@@ -1,7 +1,7 @@
 import React from "react";
 //import "primeicons/primeicons.css";
 
-function IconButton({ text, func, icon }) {
+function IconButton({ text, func, icon = ''}) {
 	return (
 		<button
 			type="button"

@@ -18,6 +18,8 @@ function Landing() {
 			};
 			console.log(data);
 		}
+
+		navigate("/home");
 	};
 
 	const handleSignUp = () => {
@@ -45,7 +47,7 @@ function Landing() {
 						className="rounded-lg border-silver border w-72 pl-3 py-1 text-midnight focus:outline-stdorange"
 					/>
 					<Button text={"ENTRAR"} func={handleLogIn} />
-					<a href=".">
+					<a href="/recuperar">
 						<p className="text-white font-light text-sm underline underline-offset-4">
 							Esqueceu sua senha?
 						</p>
