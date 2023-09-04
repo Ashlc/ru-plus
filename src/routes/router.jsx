@@ -24,11 +24,11 @@ function Router() {
 				<Route path="/pagamento" element={<Payment />} />
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
-				<Route path="/addcredito" element={<AddCredit />} />
-				<Route path="/addcredito/cartaoCredito" element={<InsertCreditCard />} />
-				<Route path="/addcredito/boleto" element={<Boleto />} />
-				<Route path="/addcredito/pix" element={<Pix />} />
-				<Route path="/aguardando-confirmacao" element={<WaitingConfirmation />} />
+				<Route path="/inserir" element={<AddCredit />} />
+				<Route path="/inserir/cartaoCredito" element={<InsertCreditCard />} />
+				<Route path="/inserir/boleto" element={<Boleto />} />
+				<Route path="/inserir/pix" element={<Pix />} />
+				<Route path="/confirmar" element={<WaitingConfirmation />} />
 				<Route path="/usuario" element={<User />} />
 
 			</Routes>
