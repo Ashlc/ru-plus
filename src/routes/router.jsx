@@ -17,6 +17,8 @@ import ChooseMeal from "../pages/Payment/ChooseMeal";
 import Extract from "../pages/Extract/Extract";
 import Handler from "../pages/Payment/Handler";
 import Confirmed from "../pages/Payment/Confirmed";
+import DeleteAccount from "../pages/DeleteAccount/DeleteAccount";
+import Redirect from "../pages/DeleteAccount/Redirect";
 
 function Router() {
 	return (
@@ -39,6 +41,8 @@ function Router() {
 				<Route path="/pagamento/jantar" element={<ChooseMeal />} />
 				<Route path="/extrato" element={<Extract />} />
 				<Route path="/handler" element={<Handler />} />
+				<Route path="/apagar" element={<DeleteAccount />} />
+				<Route path="/tchauzinho" element={<Redirect />} />
 			</Routes>
 		</BrowserRouter>
 	);

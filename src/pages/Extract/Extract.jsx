@@ -23,8 +23,6 @@ function Extract() {
 		"DEZ",
 	];
 
-	/*generate options with months array*/
-
 	const options = months.map((month, index) => {
 		return (
 			<option key={index} value={index + 1}>
