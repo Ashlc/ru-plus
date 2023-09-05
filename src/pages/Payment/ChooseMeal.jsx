@@ -1,9 +1,11 @@
 import React from "react";
 import Navigator from "../../components/Navigator/Navigator";
+import HeaderAmount from "../../components/HeaderAmount/headeramount";
 
 function ChooseMeal() {
 	return (
-		<div className="flex justify-center w-full h-screen">
+		<div className="flex flex-col relative justify-center w-full h-screen">
+			<HeaderAmount />
 			<div className="flex flex-col justify-center items-center text-center gap-7">
 				{/* Div 1 */}
 				<div className="border-2 border-silver rounded-3xl outline-2 flex-none">
@@ -13,7 +15,7 @@ function ChooseMeal() {
 							<hr className="border border-silver"></hr>
 						</div>
 						<p className="text-4xl">
-							<span className="text-silver">R$</span>
+							<span className="text-silver font-light text-3xl">R$ </span>
 							<span className="text-stdblue">1,00</span>
 						</p>
 					</div>
@@ -26,8 +28,8 @@ function ChooseMeal() {
 							<hr className="border border-silver"></hr>
 						</div>
 						<p className="text-4xl">
-							<span className="text-silver">R$</span>
-							<span className="text-stdblue">1,00</span>
+							<span className="text-silver font-light text-3xl">R$ </span>
+							<span className="text-stdblue">3,00</span>
 						</p>
 					</div>
 				</div>

@@ -10,12 +10,12 @@ function Payment1() {
 
 	return (
 		<div className="flex justify-center w-full h-screen">
-			<div className="flex flex-col justify-center items-center text-center gap-16">
+			<div className="flex flex-col justify-start tall:justify-center pt-14 tall:pt-0 items-center text-center gap-10 tall:gap-16">
 				<PriceNMeal mealType={mealType} price={price} white={false} />
 				<QRCode />
 				<div className="flex flex-col justify-center items-center">
 					<Link
-						to="/"
+						to="/home"
 						className="font-black text-xs text-stdred border rounded-3xl border-stdred py-3 px-7">
 						CANCELAR TRANSAÇÃO
 					</Link>

@@ -15,6 +15,8 @@ import User from "../pages/User/User";
 import FailedPayment from "../pages/Payment/FailedPayment";
 import ChooseMeal from "../pages/Payment/ChooseMeal";
 import Extract from "../pages/Extract/Extract";
+import Handler from "../pages/Payment/Handler";
+import Confirmed from "../pages/Payment/Confirmed";
 
 function Router() {
 	return (
@@ -33,8 +35,10 @@ function Router() {
 				<Route path="/confirmar" element={<WaitingConfirmation />} />
 				<Route path="/usuario" element={<User />} />
 				<Route path="/pagamento/erro" element={<FailedPayment />} />
+				<Route path="/pagamento/confirmado" element={<Confirmed />} />
 				<Route path="/pagamento/jantar" element={<ChooseMeal />} />
 				<Route path="/extrato" element={<Extract />} />
+				<Route path="/handler" element={<Handler />} />
 			</Routes>
 		</BrowserRouter>
 	);

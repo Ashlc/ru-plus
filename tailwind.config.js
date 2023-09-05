@@ -2,6 +2,9 @@
 module.exports = {
 	content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
 	theme: {
+		screens: {
+			'tall': { 'raw': '(min-height: 800px)' }
+		},
 		extend: {
 			colors: {
 				stdblue: "#005CA9",

@@ -13,8 +13,12 @@ function Home() {
 	};
 
 	return (
-		<div className="relative h-screen flex flex-col justify-center items-center gap-5 pb-10">
-			<img src={icon} alt="" className="absolute h-8 top-14" />
+		<main className="relative h-screen flex flex-col justify-center items-center gap-5 pb-14 tall:pb-10">
+			<img
+				src={icon}
+				alt=""
+				className="absolute h-6 tall:h-8 hidden tall:block top-14 left-14"
+			/>
 			<div className="w-4/5 flex flex-col justify-center items-center gap-8 h-full">
 				<Saldo />
 				<Extract />
@@ -25,7 +29,7 @@ function Home() {
 				/>
 			</div>
 			<Navigator place={"home"} />
-		</div>
+		</main>
 	);
 }
 
