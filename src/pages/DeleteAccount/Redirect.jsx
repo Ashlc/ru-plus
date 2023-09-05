@@ -1,10 +1,9 @@
 import React from "react";
 import logo from "../../assets/RUPLUS.svg";
-import Back from "../../components/Back/Back";
 import { useNavigate } from "react-router-dom";
 
 function Redirect() {
-	const timeout = 10000;
+	const timeout = 50000;
 	const navigate = useNavigate();
 
 	setTimeout(() => {
@@ -12,16 +11,12 @@ function Redirect() {
 	}, timeout);
 
 	return (
-		<div className="bg-stdblue w-full flex flex-col justify-center items-center gap-6 min-h-screen">
-			<div className="flex justify-center items-center">
-				<img src={logo} alt="" />
+		<div className="min-h-screen flex flex-col items-center justify-center bg-stdblue">
+			<img src={logo} alt="" className="mb-10" />
+			<p className="text-center font-bold text-2xl text-white mb-10">AGUARDE</p>
+			<div className="w-4/5 text-justify text-lg text-white [text-align-last:center]">
+				<p>O saque pode levar de 7 a 10 dias úteis para ser processado.</p>
 			</div>
-			<p className="flex justify-center font-bold text-lg text-white">
-				AGUARDE
-			</p>
-			<p className="text-white w-10/12 text-center flex justify-center font-normal">
-				O saque pode levar de 7 a 10 dias úteis para ser processado.
-			</p>
 			<div className="flex items-center absolute bottom-20">
 				<p className="text-white text-sm">Você será redirecionado.</p>
 			</div>
