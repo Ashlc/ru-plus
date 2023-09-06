@@ -22,7 +22,10 @@ function FailedPayment() {
 						Insira créditos na sua carteira virtual para utilizar o RU+
 					</p>
 				</div>
-				<Back href={"/home"} />
+				<div className = "fixed bottom-10">
+					<Back href={"/home"} col = {"midnight"}/>
+				</div>
+
 			</div>
 		</div>
 	);

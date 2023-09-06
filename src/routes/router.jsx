@@ -20,6 +20,7 @@ import Confirmed from "../pages/Payment/Confirmed";
 import DeleteAccount from "../pages/DeleteAccount/DeleteAccount";
 import Redirect from "../pages/DeleteAccount/Redirect";
 import Delete from "../pages/ConfirmDeletion/Delete";
+import ClosedRU from "../pages/Payment/ClosedRU";
 
 function Router() {
 	return (
@@ -28,7 +29,7 @@ function Router() {
 				<Route path="/" element={<Landing />} />
 				<Route path="/cadastro" element={<SignUp />} />
 				<Route path="/home" element={<Home />} />
-				<Route path="/pagamento" element={<Payment />} />
+				{/*<Route path="/pagamento" element={<Payment />} />*/}
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
 				<Route path="/inserir" element={<AddCredit />} />
@@ -36,6 +37,7 @@ function Router() {
 				<Route path="/inserir/boleto" element={<Boleto />} />
 				<Route path="/inserir/pix" element={<Pix />} />
 				<Route path="/confirmar" element={<WaitingConfirmation />} />
+				<Route path="/ClosedRU" element={<ClosedRU />} />
 				<Route path="/usuario" element={<User />} />
 				<Route path="/pagamento/erro" element={<FailedPayment />} />
 				<Route path="/pagamento/confirmado" element={<Confirmed />} />
