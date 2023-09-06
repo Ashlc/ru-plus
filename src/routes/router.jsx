@@ -21,6 +21,7 @@ import DeleteAccount from "../pages/DeleteAccount/DeleteAccount";
 import Redirect from "../pages/DeleteAccount/Redirect";
 import Delete from "../pages/ConfirmDeletion/Delete";
 import ClosedRU from "../pages/Payment/ClosedRU";
+import ChangePassword from "../pages/ChangePassword/Change";
 
 function Router() {
 	return (
@@ -47,6 +48,7 @@ function Router() {
 				<Route path="/apagar/saque" element={<DeleteAccount />} />
 				<Route path="/apagar" element={<Delete />} />
 				<Route path="/tchauzinho" element={<Redirect />} />
+				<Route path="/mudar-senha" element={<ChangePassword />} />
 			</Routes>
 		</BrowserRouter>
 	);
