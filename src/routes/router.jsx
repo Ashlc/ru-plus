@@ -30,7 +30,7 @@ function Router() {
 				<Route path="/" element={<Landing />} />
 				<Route path="/cadastro" element={<SignUp />} />
 				<Route path="/home" element={<Home />} />
-				{/*<Route path="/pagamento" element={<Payment />} />*/}
+				<Route path="/pagamento" element={<Payment />} />
 				<Route path="/verificar" element={<Verify />} />
 				<Route path="/recuperar" element={<Recover />} />
 				<Route path="/inserir" element={<AddCredit />} />

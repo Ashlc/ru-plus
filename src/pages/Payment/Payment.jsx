@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import QRCode from "./QRCodeComponent";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PriceNMeal from "./Price&Meal";
 import Navigator from "../../components/Navigator/Navigator";
 
-function Payment1({ price, mealType }) {
+function Payment1() {
+	const location = useLocation();
+	const price = location.state.price;
+	const mealType = location.state.mealType;
+
 	return (
 		<main className="flex justify-center w-full h-screen">
 			<div className="flex flex-col justify-start tall:justify-center pt-14 tall:pt-0 items-center text-center gap-10 tall:gap-16">
