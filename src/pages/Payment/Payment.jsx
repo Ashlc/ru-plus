@@ -19,7 +19,7 @@ function Payment1({price, mealType}) {
 				</div>
 				<Navigator place={"payment"} />
 			</div>
-		</main>
+		</div>
 	);
 }
 
