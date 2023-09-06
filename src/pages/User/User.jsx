@@ -6,7 +6,7 @@ import Settings from "./Settings";
 function User() {
 	return (
 		<main className="w-screen h-screen flex flex-col items-center justify-center">
-			<div className="w-10/12 flex flex-col gap-6 pb-10 h-full">
+			<div className="w-10/12 flex flex-col gap-6 pb-10 h-full pt-5">
 				<Certificate />
 				<Settings />
 			</div>

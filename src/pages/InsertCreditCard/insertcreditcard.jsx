@@ -3,10 +3,11 @@ import icon from "../../assets/credit_card.svg";
 import Navigator from "../../components/Navigator/Navigator";
 import Button from "../../components/Button/Button";
 import Back from "../../components/Back/Back";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function InsertCreditCard() {
-	const amount = 0;
+	const location = useLocation();
+	const amount = location.state.amount;
 	const navigate = useNavigate();
 	const handleClick = () => {
 		navigate("/confirmar");
@@ -24,7 +25,9 @@ function InsertCreditCard() {
 				{/* SALDO */}
 				<div className="border border-silver flex gap-3 rounded-3xl justify-center w-full py-6 items-center">
 					<p className="text-concrete font-extrabold text-3xl">R$</p>
-					<b className="text-midnight font-extrabold text-4xl">{amount}</b>
+					<b className="text-midnight font-extrabold text-4xl">
+						{amount.replace(".", ",")}
+					</b>
 				</div>
 				{/* FIELDSET 1 */}
 				<div className="w-full">

@@ -3,10 +3,12 @@ import icon from "../../assets/pix.svg";
 import Navigator from "../../components/Navigator/Navigator";
 import Button from "../../components/Button/Button";
 import Back from "../../components/Back/Back";
+import { useLocation } from "react-router-dom";
 
 function Boleto() {
+	const location = useLocation();
 	const expiration = 2;
-	const amount = 0;
+	const amount = location.state.amount;
 	const number = "41226F99-2F4F-486D-486D-B515-B0BE7308CAD";
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(number);
@@ -24,7 +26,9 @@ function Boleto() {
 				{/* SALDO */}
 				<div className="border border-silver flex gap-3 rounded-3xl justify-center w-full py-6 items-center">
 					<p className="text-concrete font-extrabold text-3xl">R$</p>
-					<b className="text-midnight font-extrabold text-4xl">{amount}</b>
+					<b className="text-midnight font-extrabold text-4xl">
+						{amount.replace(".", ",")}
+					</b>
 				</div>
 				{/* BOLETO CODE */}
 				<div className="border border-silver flex rounded-3xl justify-center w-full py-6 items-center">
