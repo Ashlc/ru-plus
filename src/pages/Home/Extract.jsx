@@ -44,12 +44,12 @@ function Extract() {
 	const fields = extract.map((e) => (
 		<table
 			key={e.key}
-			className="table-auto w-full ml-5 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
+			className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
 			<tbody>
-				<tr>
+				<tr className="text-justify">
 					<td className="font-medium">{e.meal}</td>
 					<td className="">{e.date}</td>
-					<td>{e.hour}</td>
+					<td className="w-1/5 text-right">{e.hour}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -63,7 +63,9 @@ function Extract() {
 					<p className="text-silver"> | </p>
 					<p className="text-silver"> JULHO </p>
 				</div>
-				<i className="pi pi-arrow-circle-right absolute top-5 right-5 text-silver hover:text-stdblue" />
+				<a href="../extrato">
+					<i className="pi pi-arrow-circle-right absolute top-5 right-5 text-silver hover:text-stdblue" />
+				</a>
 			</div>
 			{fields}
 		</div>
