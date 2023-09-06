@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import QRCode from "./QRCodeComponent";
 import { Link, useLocation } from "react-router-dom";
 import PriceNMeal from "./Price&Meal";
