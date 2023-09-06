@@ -92,7 +92,7 @@ function Extract() {
 	];
 
 	return (
-		<div className="h-screen w-full flex flex-col items-center gap-6 pt-10">
+		<main className="h-screen w-full flex flex-col items-center gap-6 pt-10">
 			<div className="flex w-11/12 gap-4 items-center overflow-scroll">
 				<img src={receipt} alt="" className="h-7" />
 				<p className="text-xl text-stdblue font-bold">EXTRATO</p>
@@ -115,7 +115,7 @@ function Extract() {
 				<Column field="hour" header="HORA" />
 			</DataTable>
 			<Navigator className="absolute bottom-0" />
-		</div>
+		</main>
 	);
 }
 

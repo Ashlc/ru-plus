@@ -23,7 +23,7 @@ function AddCreditCard() {
 	};
 
 	return (
-		<div className="flex flex-col items-center w-screen min-h-screen gap-10">
+		<main className="flex flex-col items-center w-screen h-screen gap-10">
 			<HeaderAmount saldo={"0,00"} />
 			<div className="flex flex-col w-9/12 gap-10">
 				<div className="text-concrete relative flex flex-col items-center pt-20">
@@ -38,7 +38,7 @@ function AddCreditCard() {
 				<Button text={"AVANÇAR"} func={handleClick} col="blue" />
 			</div>
 			<Navigator />
-		</div>
+		</main>
 	);
 }
 export default AddCreditCard;

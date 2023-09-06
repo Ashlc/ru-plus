@@ -12,7 +12,7 @@ function Boleto() {
 		navigator.clipboard.writeText(number);
 	};
 	return (
-		<div className="flex flex-col items-center h-screen w-full">
+		<main className="flex flex-col items-center h-screen w-full">
 			{/* HEADER */}
 			<div className="w-full flex justify-center items-center bg-stdblue text-white rounded-b-2xl h-14">
 				<p className="font-semibold text-base">BOLETO</p>
@@ -43,7 +43,7 @@ function Boleto() {
 				<Back href={"/inserir"} col="blue" />
 			</div>
 			<Navigator />
-		</div>
+		</main>
 	);
 }
 

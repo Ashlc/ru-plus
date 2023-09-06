@@ -9,7 +9,7 @@ function Payment1() {
 	const price = 3.0;
 
 	return (
-		<div className="flex justify-center w-full h-screen">
+		<main className="flex justify-center w-full h-screen">
 			<div className="flex flex-col justify-center items-center text-center gap-16">
 				<PriceNMeal mealType={mealType} price={price} white={false} />
 				<QRCode />
@@ -22,7 +22,7 @@ function Payment1() {
 				</div>
 				<Navigator place={"payment"} />
 			</div>
-		</div>
+		</main>
 	);
 }
 

@@ -13,19 +13,21 @@ function Home() {
 	};
 
 	return (
-		<div className="relative h-screen flex flex-col justify-center items-center gap-5 pb-10">
-			<img src={icon} alt="" className="absolute h-8 top-14" />
-			<div className="w-4/5 flex flex-col justify-center items-center gap-8 h-full">
-				<Saldo />
-				<Extract />
-				<IconButton
-					text="INSERIR CRÉDITOS"
-					icon="pi-credit-card"
-					func={navigateInsert}
-				/>
+		<main className="relative h-screen flex flex-col justify-center items-center w-full gap-5 pb-10">
+			<div className="flex flex-col justify-center items-center w-full h-screen lg:w-1/2">
+				<img src={icon} alt="" className="absolute h-8 top-14" />
+				<div className="w-4/5 flex flex-col justify-center items-center gap-8 h-full">
+					<Saldo />
+					<Extract />
+					<IconButton
+						text="INSERIR CRÉDITOS"
+						icon="pi-credit-card"
+						func={navigateInsert}
+					/>
+				</div>
+				<Navigator place={"home"} />
 			</div>
-			<Navigator place={"home"} />
-		</div>
+		</main>
 	);
 }
 
