@@ -3,7 +3,7 @@ import logo from "../../assets/RUPLUS.svg";
 import { useNavigate } from "react-router-dom";
 
 function Redirect() {
-	const timeout = 50000;
+	const timeout = 7000;
 	const navigate = useNavigate();
 
 	setTimeout(() => {

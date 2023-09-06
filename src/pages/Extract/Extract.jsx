@@ -49,7 +49,7 @@ function Extract() {
 				<DataTable
 					value={extract}
 					scrollable
-					scrollHeight="70vh"
+					scrollHeight="65vh"
 					className="w-full">
 					<Column field="meal" header="REFEIÇÃO" />
 					<Column field="date" header="DATA" />
