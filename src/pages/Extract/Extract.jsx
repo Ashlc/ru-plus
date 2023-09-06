@@ -1,121 +1,63 @@
 import React from "react";
+import receipt from "../../assets/receipt.svg";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Dropdown } from "primereact/dropdown";
-import receipt from "../../assets/receipt.svg";
+import "primeicons/primeicons.css";
 import "primereact/resources/themes/tailwind-light/theme.css";
-import Select from "./Select";
-import Back from "../../components/Back/Back";
+import { extract } from "./data.js";
 import Navigator from "../../components/Navigator/Navigator";
 
 function Extract() {
-	const [month, setMonth] = React.useState(null);
-	const extract = [
-		{
-			key: 1,
-			meal: "LUNCH",
-			date: "21/07",
-			hour: "12:47",
-		},
-		{
-			key: 2,
-			meal: "LUNCH",
-			date: "19/07",
-			hour: "12:54",
-		},
-		{
-			key: 3,
-			meal: "LUNCH",
-			date: "18/07",
-			hour: "12:55",
-		},
-		{
-			key: 4,
-			meal: "LUNCH",
-			date: "17/07",
-			hour: "12:34",
-		},
-		{
-			key: 5,
-			meal: "LUNCH",
-			date: "16/07",
-			hour: "12:13",
-		},
-		{
-			key: 6,
-			meal: "LUNCH",
-			date: "15/07",
-			hour: "12:48",
-		},
-		{
-			key: 7,
-			meal: "LUNCH",
-			date: "21/07",
-			hour: "12:47",
-		},
-		{
-			key: 8,
-			meal: "LUNCH",
-			date: "19/07",
-			hour: "12:54",
-		},
-		{
-			key: 9,
-			meal: "LUNCH",
-			date: "18/07",
-			hour: "12:55",
-		},
-		{
-			key: 10,
-			meal: "LUNCH",
-			date: "17/07",
-			hour: "12:34",
-		},
-		{
-			key: 11,
-			meal: "LUNCH",
-			date: "16/07",
-			hour: "12:13",
-		},
-		{
-			key: 12,
-			meal: "LUNCH",
-			date: "15/07",
-			hour: "12:48",
-		},
-		{
-			key: 13,
-			meal: "LUNCH",
-			date: "21/07",
-			hour: "12:47",
-		},
+	const months = [
+		"JAN",
+		"FEV",
+		"MAR",
+		"ABR",
+		"MAI",
+		"JUN",
+		"JUL",
+		"AGO",
+		"SET",
+		"OUT",
+		"NOV",
+		"DEZ",
 	];
 
+	const options = months.map((month, index) => {
+		return (
+			<option key={index} value={index + 1}>
+				{month}
+			</option>
+		);
+	}, []);
+
 	return (
-		<main className="h-screen w-full flex flex-col items-center gap-6 pt-10">
-			<div className="flex w-11/12 gap-4 items-center overflow-scroll">
-				<img src={receipt} alt="" className="h-7" />
-				<p className="text-xl text-stdblue font-bold">EXTRATO</p>
-			</div>
-			<div className="flex flex-col w-11/12 gap-2">
-				<hr className="w-full border-silver" />
-				<div className="w-full gap-4 flex items-center justify-end">
-					<p>PERÍODO</p>
-					<Select />
+		<div className="relative h-screen w-full flex flex-col">
+			<div className="flex flex-col p-6 h-full w-full gap-2">
+				<div className="flex items-center gap-3 tall:gap-4 mb-3 tall:mt-3">
+					<img src={receipt} alt="Extrato" className="h-8" />
+					<p className="text-stdblue text-xl font-bold">EXTRATO</p>
 				</div>
-				<hr className="w-full border-silver" />
+				<hr className="border-silver" />
+				<div className="flex items-center justify-between px-6">
+					<p className="text-silver">PERÍODO</p>
+					<select name="Meses" id="month" className="px-2">
+						{options}
+					</select>
+				</div>
+				<hr className="border-silver tall:mb-3" />
+				<DataTable
+					value={extract}
+					scrollable
+					scrollHeight="70vh"
+					className="w-full">
+					<Column field="meal" header="REFEIÇÃO" />
+					<Column field="date" header="DATA" />
+					<Column field="hour" header="HORA" />
+				</DataTable>
 			</div>
-			<DataTable
-				value={extract}
-				scrollable
-				scrollHeight="65vh"
-				className="h-fit w-11/12">
-				<Column field="meal" header="REFEIÇÃO" />
-				<Column field="date" header="DATA" />
-				<Column field="hour" header="HORA" />
-			</DataTable>
-			<Navigator className="absolute bottom-0" />
-		</main>
+			<Navigator />
+		</div>
 	);
 }
 

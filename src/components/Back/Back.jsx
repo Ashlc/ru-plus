@@ -8,6 +8,12 @@ function Back({ href, styles, col = "white" }) {
 				<p className="text-lg text-white font-bold underline">VOLTAR</p>
 			</Link>
 		);
+	} else if (col === "midnight")  {
+		return (
+			<Link to={href} className={styles}>
+				<p className="text-lg text-midnight font-bold underline">VOLTAR</p>
+			</Link>
+		);
 	} else {
 		return (
 			<Link to={href} className={styles}>

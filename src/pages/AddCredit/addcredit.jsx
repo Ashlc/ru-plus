@@ -26,7 +26,7 @@ function AddCreditCard() {
 		<main className="flex flex-col items-center w-screen h-screen gap-10">
 			<HeaderAmount saldo={"0,00"} />
 			<div className="flex flex-col w-9/12 gap-10">
-				<div className="text-concrete relative flex flex-col items-center pt-20">
+				<div className="text-concrete relative flex flex-col items-center pt-10 tall:pt-20">
 					<p className="absolute left-0">R$</p>
 					<input
 						type="number"

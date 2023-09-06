@@ -25,7 +25,7 @@ function Navigator({ place = null }) {
 
 	return (
 		<div className="w-full lg:w-1/2 flex justify-around items-center bg-stdblue h-16 absolute bottom-0 rounded-t-2xl">
-			<a href="/pagamento">
+			<a href="/handler">
 				<div
 					className={
 						"flex items-center justify-center w-10 rounded-xl hover:bg-moonstone transition-all" +
