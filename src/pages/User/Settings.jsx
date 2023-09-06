@@ -17,7 +17,9 @@ function Settings() {
 				<a href="/extrato">
 					<p className="font-medium text-midnight">VISUALIZAR EXTRATO</p>
 				</a>
-				<p className="font-medium text-midnight">ALTERAR SENHA</p>
+				<a href="/mudar-senha">
+					<p className="font-medium text-midnight">ALTERAR SENHA</p>
+				</a>
 				<a href="/apagar">
 					<p className="font-medium text-stdred">APAGAR CONTA</p>
 				</a>
