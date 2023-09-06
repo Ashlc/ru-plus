@@ -24,7 +24,7 @@ function Navigator({ place = null }) {
 	}, [place]);
 
 	return (
-		<div className="w-full flex justify-around items-center bg-stdblue h-16 absolute bottom-0 rounded-t-2xl">
+		<div className="w-full lg:w-1/2 flex justify-around items-center bg-stdblue h-16 absolute bottom-0 rounded-t-2xl">
 			<a href="/handler">
 				<div
 					className={

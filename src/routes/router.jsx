@@ -38,7 +38,7 @@ function Router() {
 				<Route path="/inserir/boleto" element={<Boleto />} />
 				<Route path="/inserir/pix" element={<Pix />} />
 				<Route path="/confirmar" element={<WaitingConfirmation />} />
-				<Route path="/ClosedRU" element={<ClosedRU />} />
+				<Route path="/indisponivel" element={<ClosedRU />} />
 				<Route path="/usuario" element={<User />} />
 				<Route path="/pagamento/erro" element={<FailedPayment />} />
 				<Route path="/pagamento/confirmado" element={<Confirmed />} />
