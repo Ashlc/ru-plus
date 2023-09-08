@@ -9,6 +9,8 @@ module.exports = {
 				moonstone: "#2571CF",
 				stdorange: "#E67E22",
 				midnight: "#2D3436",
+				concrete: "#7F8C8D",
+				red: '#EB3B5A',
 			},
 		},
 	},

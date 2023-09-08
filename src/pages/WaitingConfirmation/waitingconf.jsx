@@ -3,9 +3,9 @@ import WatchIcon from "../../assets/chronic.svg";
 
 function WaitingConfirmation(){
     return(
-        <div className="bg-[#005CA9] flex-column">
+        <div className="bg-[#005CA9] flex-column min-h-screen">
             <div className="flex justify-center mb-8">
-                <img src={WatchIcon}/>
+                <img src={WatchIcon} alt=""/>
             </div>
             <div className="w-2/4 flex-column bg-pink-200 justify-center m-auto mb-14">
                 <h1 className="flex justify-center font-extrabold text-[#fff]">AGUARDANDO CONFIRMAÇÃO</h1>
