@@ -103,7 +103,7 @@ function SignUp() {
 
 	return (
 		<div className="flex flex-col items-center w-full min-h-screen pt-10 bg-stdblue">
-			<div className=" flex flex-col w-10/12 gap-8">
+			<div className=" flex flex-col w-10/12 lg:w-2/5 gap-8">
 				<div className="flex justify-between w-full">
 					<p className="text-white text-2xl font-extrabold">CADASTRO</p>
 					<img src={logo} alt="" className="h-6" />
