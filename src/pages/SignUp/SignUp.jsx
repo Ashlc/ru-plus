@@ -1,5 +1,6 @@
 import "./SignUp.css";
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../assets/RUPLUS.svg";
 import Form from "./Form";
 import { User } from "./User";
@@ -13,6 +14,8 @@ function SignUp() {
 	const [checked, setChecked] = useState(true);
 	const [invalidPhone, setInvalidPhone] = useState(false);
 	const [noFile, setNoFile] = useState(false);
+
+	const navigate = useNavigate();
 
 	const handleUpload = (e) => {
 		if (e.target.files.length !== 0) {
@@ -73,7 +76,7 @@ function SignUp() {
 		else return true;
 	};
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		if (display === "hidden") {
 			setChecked(false);
 			setTimeout(checkedTimeout, 3000);
@@ -90,6 +93,7 @@ function SignUp() {
 				const user = new User();
 				user.addFiles(file);
 				const data = user.getJSON();
+				postUser(data)
 				console.log(data);
 			} catch (error) {
 				console.error(error);
@@ -98,8 +102,32 @@ function SignUp() {
 		} else {
 			setInvalidPhone(true);
 			setTimeout(phoneTimeout, 3000);
-		}
+		}		
 	};
+
+	const postUser = async (data) => {
+		try {
+			const response = await fetch("http://localhost:3001/user/create", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+			});
+			console.log(response);
+			if (response.status !== 200) {
+				console.log("Error.");
+			} else {
+				navigate("/");
+			}
+
+			const result = await response.json();
+			console.log(result);
+		} catch (error) {
+			console.log(error);
+			return;
+		}
+	}
 
 	return (
 		<div className="flex flex-col items-center w-full min-h-screen pt-10 bg-stdblue">

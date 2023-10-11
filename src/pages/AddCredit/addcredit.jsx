@@ -10,11 +10,32 @@ function AddCreditCard() {
 	const navigate = useNavigate();
 	const [invalid, setInvalid] = React.useState(false);
 
-	const handleClick = () => {
+	const handleClick = async () => {
 		const val = document.getElementById("paymentoptions").selected;
 		const amount = document.getElementById("amount").value;
+		
 		if (amount === "") {
 			warn();
+		} else { 
+			const id = localStorage.getItem('idUser');
+			try {
+				const response = await fetch(`http://localhost:3001/wallet/${id}`, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ amount }),
+				});
+
+			if(!response.ok) {
+				throw new Error('failed to add credit');
+			}
+
+			const result = await response.json();
+			console.log(result);
+			} catch (error) {
+				console.error(error);
+			}
 		}
 		if (val === "credit" && amount !== "") {
 			navigate("/inserir/cartao", { state: { amount: amount } });
