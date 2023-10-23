@@ -24,9 +24,7 @@ function Landing() {
 	})
 	
 	
-	const handleLogIn = async () => {
-		console.log(email, password);
-		
+	const handleLogIn = async () => {		
 		if(email === "" || password === "") {
 			toast.current.show({
 				severity: "error",
@@ -63,6 +61,7 @@ function Landing() {
 				})
 			}
 			localStorage.setItem('idUser', data.id);
+			localStorage.setItem('idWallet', data.wallet[0].id);
 		} catch (error) {
 			toast.current.show({
 				severity: "error",

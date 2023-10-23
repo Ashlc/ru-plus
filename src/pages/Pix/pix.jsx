@@ -20,7 +20,7 @@ function Boleto() {
 				<p className="font-semibold text-base">PIX</p>
 			</div>
 			{/* PAGE */}
-			<div className="w-10/12 h-[80vh] flex flex-col gap-10 h-full items-center justify-center">
+			<div className="w-10/12 h-[80vh] flex flex-col gap-10 items-center justify-center">
 				{/* BARCODE ICON */}
 				<img src={icon} alt="barcode icon" className="h-16" />
 				{/* SALDO */}

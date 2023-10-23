@@ -1,7 +1,32 @@
 import React from "react";
 import "primeicons/primeicons.css";
+import { useNavigate } from "react-router-dom";
 
 function Settings() {
+	const navigate = useNavigate();
+
+	const handleClick = async () => {
+		try {
+			const id = localStorage.getItem("idUser");
+			console.log("id: ", id);
+			const response = await fetch(`http://localhost:3001/user/delete/${id}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			});
+			if (response.status !== 200) {
+				console.log("Error.");
+			} else {
+				navigate("/");
+			}
+			const result = await response.json();
+			console.log(result);
+		} catch (error) {
+			console.log(error);
+			return;
+		}
+	}
 	return (
 		<div className="flex flex-col gap-2 tall:gap-4">
 			<hr />
@@ -20,7 +45,7 @@ function Settings() {
 				<a href="/mudar-senha">
 					<p className="font-medium text-midnight">ALTERAR SENHA</p>
 				</a>
-				<a href="/apagar">
+				<a href="/apagar" onClick={handleClick}>
 					<p className="font-medium text-stdred">APAGAR CONTA</p>
 				</a>
 			</div>

@@ -17,15 +17,16 @@ function Handler() {
 
 	const time = currentTime.getHours() * 60 + currentTime.getMinutes();
 
+	navigate("/pagamento/jantar");
 	/*690 às 840 e das 1020 às 1170*/
 
-	if (time >= 690 && time <= 840) {
-		navigate("/pagamento", { state: { price: 3, mealType: "ALMOÇO" } });
-	} else if (time >= 1020 && time <= 1170) {
-		navigate("/pagamento/jantar");
-	} else {
-		navigate("/indisponivel");
-	}
+	// if (time >= 690 && time <= 840) {
+	// 	navigate("/pagamento", { state: { price: 3, mealType: "ALMOÇO" } });
+	// } else if (time >= 1020 && time <= 1170) {
+	// 	navigate("/pagamento/jantar");
+	// } else {
+	// 	navigate("/indisponivel");
+	// }
 
 	return (
 		<div className="flex flex-col h-screen items-center justify-center">

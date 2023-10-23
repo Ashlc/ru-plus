@@ -4,12 +4,59 @@ import { useNavigate } from "react-router-dom";
 
 function ChooseMeal() {
 	const navigate = useNavigate();
-	const handleClickSoup = () => {
-		navigate("/pagamento/", { state: { price: 1, mealType: "SOPA OU BOLO" } });
+
+	const handleClickSoup = async () => {
+		const price = 1;
+		const mealType = "SOPA OU BOLO";
+		const idUser = localStorage.getItem("idUser");
+		const idWallet = localStorage.getItem("idWallet");
+		localStorage.setItem("idMeal", "e6d86b41-1dee-42cf-80f2-986592e9a669");
+		const idMeal =  localStorage.getItem("idMeal");
+		navigate("/pagamento/", { state: { price, mealType } });
+		
+		const data = { price, mealType, idUser, idWallet, idMeal};
+		console.log(data);
+
+		const response = await fetch("http://localhost:3001/transaction/createTr", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.catch(error => {
+			console.error("Error:", error);
+		});
+		console.log(data);
 	};
-	const handleClickDinner = () => {
-		navigate("/pagamento/", { state: { price: 3, mealType: "REGIONAL" } });
+
+	const handleClickDinner = async () => {
+		const price = 3;
+		const mealType = "REGIONAL";
+		const idUser = localStorage.getItem("idUser");
+		const idWallet = localStorage.getItem("idWallet");
+		localStorage.setItem("idMeal", "8b58e9f8-142d-4dad-8184-12f66341da09");
+		const idMeal =  localStorage.getItem("idMeal");
+		navigate("/pagamento/", { state: { price, mealType } });
+		
+		const data = { price, mealType, idUser, idWallet, idMeal};
+		console.log(data);
+
+		const response = await fetch("http://localhost:3001/transaction/createTr", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.catch(error => {
+			console.error("Error:", error);
+		});
+		console.log(data);
 	};
+
 	return (
 		<div className="flex justify-center w-full h-screen pb-20 tall:pb-10">
 			<div className="flex flex-col justify-center items-center text-center gap-7 tall:gap-20">

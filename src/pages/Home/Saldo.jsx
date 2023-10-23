@@ -8,16 +8,18 @@ export default function Saldo({  }) {
 
 	const getData = async () => {
 		const id = localStorage.getItem('idUser');
-		const response = await fetch(`http://localhost:3001/user/${id}`,
+		const response = await fetch(`http://localhost:3001/user/getUser`,
 			{
-				method: 'GET',
+				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
+				body: JSON.stringify({id}),
 			}
 		);
+		console.log(response);
 		const data = await response.json();
-		console.log(data.wallet[0].balance)
+		console.log(data.wallet);
 		document.getElementById("wallet").innerHTML = data.wallet[0].balance;	
 	}
 
