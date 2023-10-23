@@ -9,30 +9,29 @@ import "primeicons/primeicons.css";
 function AddCreditCard() {
 	const navigate = useNavigate();
 	const [invalid, setInvalid] = React.useState(false);
+	const [val, setVal] = React.useState("boleto");
+	const [amount, setAmount] = React.useState("");
 
 	const handleClick = async () => {
-		const val = document.getElementById("paymentoptions").selected;
-		const amount = document.getElementById("amount").value;
-		
 		if (amount === "") {
 			warn();
-		} else { 
-			const id = localStorage.getItem('idUser');
+		} else {
+			const id = localStorage.getItem("idUser");
 			try {
 				const response = await fetch(`http://localhost:3001/wallet/${id}`, {
-					method: 'PUT',
+					method: "PUT",
 					headers: {
-						'Content-Type': 'application/json'
+						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({ amount }),
 				});
 
-			if(!response.ok) {
-				throw new Error('failed to add credit');
-			}
+				if (!response.ok) {
+					throw new Error("failed to add credit");
+				}
 
-			const result = await response.json();
-			console.log(result);
+				const result = await response.json();
+				console.log(result);
 			} catch (error) {
 				console.error(error);
 			}
@@ -65,12 +64,17 @@ function AddCreditCard() {
 					<p className="absolute left-0">R$</p>
 					<input
 						id="amount"
+						value={amount}
+						onChange={(e) => {
+							setAmount(e.target.value);
+							console.log(amount);
+						}}
 						type="number"
 						className="w-full appearance-none outline-none border-b-2 border-stdblue text-midnight font-semibold mb-4 text-center px-10 pb-2 focus:border-stdorange active:border-b-3 focus:appearance-none"
 					/>
 					<p className="text-xs flex justify-center">VALOR A SER DEPOSITADO</p>
 				</div>
-				<PaymentOptions />
+				<PaymentOptions val={val} setVal={setVal} />
 				<Button text={"AVANÇAR"} func={handleClick} col="blue" />
 				{invalid && (
 					<div className="flex items-center gap-3 border border-stdblue p-5 rounded-lg">

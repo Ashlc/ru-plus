@@ -8,7 +8,8 @@ import { useLocation } from "react-router-dom";
 function Boleto() {
 	const location = useLocation();
 
-	const amount = location.state.amount;
+	const { amount } = location.state;
+	console.log(amount);
 	const expiration = 2;
 	const number = "34191.75124 34567.871230 41234.560005 2 94230000026035";
 	const copyToClipboard = () => {

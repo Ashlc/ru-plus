@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 
-function PaymentOptions() {
+function PaymentOptions({ val, setVal }) {
 	const [displayCredit, setDisplayCredit] = useState("hidden");
 	const [displayBoleto, setDisplayBoleto] = useState("block");
 	const [displayPix, setDisplayPix] = useState("hidden");
-	const [val, setVal] = useState("boleto");
 
 	const handleCheckCredit = () => {
 		displayCredit === "hidden"

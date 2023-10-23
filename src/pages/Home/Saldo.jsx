@@ -1,27 +1,27 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function Saldo({  }) {
+export default function Saldo({}) {
+	const [amount, setAmount] = useState(0);
+
 	useEffect(() => {
 		getData();
-	}, [])
+	}, []);
 
 	const getData = async () => {
-		const id = localStorage.getItem('idUser');
-		const response = await fetch(`http://localhost:3001/user/getUser`,
-			{
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({id}),
-			}
-		);
+		const id = localStorage.getItem("idUser");
+		const response = await fetch(`http://localhost:3001/user/getUser`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ id }),
+		});
 		console.log(response);
 		const data = await response.json();
 		console.log(data.wallet);
-		document.getElementById("wallet").innerHTML = data.wallet[0].balance;	
-	}
+		setAmount(data.wallet[0].balance);
+	};
 
 	return (
 		<div className="h-1/5 w-full relative border border-silver rounded-2xl flex flex-col items-center justify-center gap-2">
@@ -29,7 +29,7 @@ export default function Saldo({  }) {
 				<p className="text-stdblue font-bold text-md">SALDO</p>
 			</div>
 			<p className="text-silver text-4xl font-medium">
-				R$ <b className="text-midnight" id="wallet"></b>
+				R$ <b className="text-midnight">{amount}</b>
 			</p>
 		</div>
 	);

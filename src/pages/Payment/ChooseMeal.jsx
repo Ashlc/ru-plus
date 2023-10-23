@@ -10,24 +10,28 @@ function ChooseMeal() {
 		const mealType = "SOPA OU BOLO";
 		const idUser = localStorage.getItem("idUser");
 		const idWallet = localStorage.getItem("idWallet");
-		localStorage.setItem("idMeal", "e6d86b41-1dee-42cf-80f2-986592e9a669");
-		const idMeal =  localStorage.getItem("idMeal");
 		navigate("/pagamento/", { state: { price, mealType } });
-		
-		const data = { price, mealType, idUser, idWallet, idMeal};
+
+		const data = { price, mealType, idUser, idWallet };
 		console.log(data);
 
-		const response = await fetch("http://localhost:3001/transaction/createTr", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(data),
-		})
-		.then(response => response.json())
-		.catch(error => {
-			console.error("Error:", error);
-		});
+		try {
+			const response = await fetch(
+				"http://localhost:3001/transaction/createTr",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				},
+			);
+
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+
 		console.log(data);
 	};
 
@@ -36,24 +40,29 @@ function ChooseMeal() {
 		const mealType = "REGIONAL";
 		const idUser = localStorage.getItem("idUser");
 		const idWallet = localStorage.getItem("idWallet");
-		localStorage.setItem("idMeal", "8b58e9f8-142d-4dad-8184-12f66341da09");
-		const idMeal =  localStorage.getItem("idMeal");
+		const idMeal = localStorage.getItem("idMeal");
 		navigate("/pagamento/", { state: { price, mealType } });
-		
-		const data = { price, mealType, idUser, idWallet, idMeal};
+
+		const data = { price, mealType, idUser, idWallet, idMeal };
 		console.log(data);
 
-		const response = await fetch("http://localhost:3001/transaction/createTr", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(data),
-		})
-		.then(response => response.json())
-		.catch(error => {
-			console.error("Error:", error);
-		});
+		try {
+			const response = await fetch(
+				"http://localhost:3001/transaction/createTr",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(data),
+				},
+			);
+
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+
 		console.log(data);
 	};
 
