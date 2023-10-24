@@ -59,7 +59,7 @@ function Landing() {
 				});
 			}
 			localStorage.setItem("idUser", data.id);
-			localStorage.setItem("idWallet", data.wallet[0].id);
+			localStorage.setItem("idWallet", data.wallet.pop().id);
 			localStorage.setItem("name", data.name);
 		} catch (error) {
 			toast.current.show({

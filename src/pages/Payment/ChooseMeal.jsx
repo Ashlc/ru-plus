@@ -28,7 +28,10 @@ function ChooseMeal() {
 	const handleClickSoup = async () => {
 		const price = 1;
 
-		if (balance < price) navigate("/pagamento/erro");
+		if (balance < price) {
+			navigate("/pagamento/erro");
+			return;
+		}
 
 		const mealType = "SOPA OU BOLO";
 		const idUser = localStorage.getItem("idUser");
@@ -61,7 +64,10 @@ function ChooseMeal() {
 	const handleClickDinner = async () => {
 		const price = 3;
 
-		if (balance < price) navigate("/pagamento/erro");
+		if (balance < price) {
+			navigate("/pagamento/erro");
+			return;
+		}
 
 		const mealType = "REGIONAL";
 		const idUser = localStorage.getItem("idUser");

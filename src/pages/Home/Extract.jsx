@@ -5,7 +5,6 @@ function Extract() {
 	const [extract, setExtract] = React.useState([]);
 
 	const getTransactions = async () => {
-		// ta pegando a mesma carteira td vez
 		const id = localStorage.getItem("idUser");
 
 		const response = await fetch(`http://localhost:3001/transaction/${id}`, {
@@ -38,19 +37,30 @@ function Extract() {
 		return `${hour}:${minutes}`;
 	};
 
-	const fields = extract.map((e) => (
-		<table
-			key={e.key}
-			className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
-			<tbody>
-				<tr className="text-justify">
-					<td className="w-6/12 font-medium">{e.mealName}</td>
-					<td className="">{parseDate(e.createdAt)}</td>
-					<td className="w-1/5 text-right">{parseHour(e.createdAt)}</td>
-				</tr>
-			</tbody>
-		</table>
-	));
+	let fields;
+	if (Array.isArray(extract)) {
+		fields = extract.map((e, index) => (
+			<table
+				key={`${e.mealName}-${index}`}
+				className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
+				<tbody>
+					<tr className="text-justify">
+						<td className="w-6/12 font-medium">{e.mealName}</td>
+						<td className="">{parseDate(e.createdAt)}</td>
+						<td className="w-1/5 text-right">{parseHour(e.createdAt)}</td>
+					</tr>
+				</tbody>
+			</table>
+		));
+	} else {
+		fields = (
+			<div className="flex flex-col gap-10 tall:gap-16">
+				<p className="ml-5 font-medium text-midnight">
+					Nenhuma transação realizada.
+				</p>
+			</div>
+		);
+	}
 	return (
 		<div className="h-fit pb-4 border border-silver rounded-2xl w-full">
 			{/* TITLE */}
@@ -64,15 +74,7 @@ function Extract() {
 					<i className="pi pi-arrow-circle-right absolute top-5 right-5 text-silver hover:text-stdblue" />
 				</a>
 			</div>
-			{extract ? (
-				fields
-			) : (
-				<div className="flex flex-col gap-10 tall:gap-16">
-					<p className="font-medium text-midnight">
-						Nenhuma transação realizada.
-					</p>
-				</div>
-			)}
+			{fields}
 		</div>
 	);
 }

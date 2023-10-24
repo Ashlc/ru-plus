@@ -19,8 +19,9 @@ export default function Saldo({}) {
 		});
 		console.log(response);
 		const data = await response.json();
-		console.log(data.wallet);
-		setAmount(data.wallet[0].balance);
+		console.log(data);
+		const bal = data.wallet.pop().balance;
+		setAmount(bal);
 	};
 
 	return (
