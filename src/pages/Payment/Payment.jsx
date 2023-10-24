@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import QRCode from "./QRCodeComponent";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import PriceNMeal from "./Price&Meal";
@@ -10,6 +10,43 @@ function Payment1() {
 	const navigate = useNavigate();
 	const price = location.state.price;
 	const mealType = location.state.mealType;
+	const balance = location.state.balance;
+
+	useEffect(() => {
+		const createTransaction = async () => {
+			const idUser = localStorage.getItem("idUser");
+			const idWallet = localStorage.getItem("idWallet");
+			const data = { price, mealType, idUser, idWallet };
+
+			if (balance < price) {
+				console.log(balance, price);
+				navigate("/pagamento/erro");
+				return;
+			}
+
+			try {
+				const response = await fetch(
+					"http://localhost:3001/transaction/createTr",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(data),
+					},
+				);
+				if (response.ok) {
+					setTimeout(() => {
+						navigate("/pagamento/confirmado");
+						return;
+					}, 2000);
+				}
+			} catch (error) {
+				console.log(error.message);
+			}
+		}
+		createTransaction();
+	}, []);
 
 	return (
 		<main className="flex justify-center w-full h-screen">

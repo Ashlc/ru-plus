@@ -7,19 +7,23 @@ function Extract() {
 	const getTransactions = async () => {
 		const id = localStorage.getItem("idUser");
 
-		const response = await fetch(`http://localhost:3001/transaction/${id}`, {
+		const response = await fetch(`http://localhost:3001/transaction/latest/${id}`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
 		const data = await response.json();
-		console.log(data);
 		setExtract(data);
 	};
 
 	React.useEffect(() => {
-		getTransactions();
+		const timeout = setTimeout(() => {
+			if (localStorage.getItem("idUser")) {
+				clearTimeout(timeout);
+				getTransactions();
+			}
+		}, 100);
 	}, []);
 
 	const parseDate = (date) => {
@@ -39,19 +43,30 @@ function Extract() {
 
 	let fields;
 	if (Array.isArray(extract)) {
-		fields = extract.map((e, index) => (
-			<table
-				key={`${e.mealName}-${index}`}
-				className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
-				<tbody>
-					<tr className="text-justify">
-						<td className="w-6/12 font-medium">{e.mealName}</td>
-						<td className="">{parseDate(e.createdAt)}</td>
-						<td className="w-1/5 text-right">{parseHour(e.createdAt)}</td>
-					</tr>
-				</tbody>
-			</table>
-		));
+		if (extract.length === 0) {
+			fields = (
+				<div className="flex flex-col gap-10 tall:gap-16">
+					<p className="ml-5 mt-2 text-sm text-concrete">
+						Nenhuma transação realizada.
+					</p>
+				</div>
+			);
+		} else {
+			fields = extract.map((e, index) => (
+				<table
+					key={`${e.mealName}-${index}`}
+					className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm"
+				>
+					<tbody>
+						<tr className="text-justify">
+							<td className="w-6/12 font-medium">{e.mealName}</td>
+							<td className="">{parseDate(e.createdAt)}</td>
+							<td className="w-1/5 text-right">{parseHour(e.createdAt)}</td>
+						</tr>
+					</tbody>
+				</table>
+			));
+		}
 	} else {
 		fields = (
 			<div className="flex flex-col gap-10 tall:gap-16">

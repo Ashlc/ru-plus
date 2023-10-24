@@ -27,74 +27,14 @@ function ChooseMeal() {
 
 	const handleClickSoup = async () => {
 		const price = 1;
-
-		if (balance < price) {
-			navigate("/pagamento/erro");
-			return;
-		}
-
 		const mealType = "SOPA OU BOLO";
-		const idUser = localStorage.getItem("idUser");
-		const idWallet = localStorage.getItem("idWallet");
-		navigate("/pagamento/", { state: { price, mealType } });
-
-		const data = { price, mealType, idUser, idWallet };
-		console.log(data);
-
-		try {
-			const response = await fetch(
-				"http://localhost:3001/transaction/createTr",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(data),
-				},
-			);
-
-			console.log(response);
-		} catch (error) {
-			console.log(error.message);
-		}
-
-		console.log(data);
+		navigate("/pagamento/", { state: { price, mealType, balance } });
 	};
 
 	const handleClickDinner = async () => {
 		const price = 3;
-
-		if (balance < price) {
-			navigate("/pagamento/erro");
-			return;
-		}
-
 		const mealType = "REGIONAL";
-		const idUser = localStorage.getItem("idUser");
-		const idWallet = localStorage.getItem("idWallet");
-		navigate("/pagamento/", { state: { price, mealType } });
-
-		const data = { price, mealType, idUser, idWallet };
-		console.log(data);
-
-		try {
-			const response = await fetch(
-				"http://localhost:3001/transaction/createTr",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(data),
-				},
-			);
-
-			console.log(response);
-		} catch (error) {
-			console.log(error.message);
-		}
-
-		console.log(data);
+		navigate("/pagamento/", { state: { price, mealType, balance } });
 	};
 
 	return (

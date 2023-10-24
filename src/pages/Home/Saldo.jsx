@@ -5,7 +5,12 @@ export default function Saldo({}) {
 	const [amount, setAmount] = useState(0);
 
 	useEffect(() => {
-		getData();
+		const timeout = setTimeout(() => {
+			if (localStorage.getItem("idUser")) {
+				clearTimeout(timeout);
+				getData();
+			}
+		}, 100);
 	}, []);
 
 	const getData = async () => {
