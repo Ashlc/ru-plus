@@ -10,7 +10,6 @@ function User() {
 				<Certificate />
 				<Settings />
 			</div>
-			compu
 			<Navigator place={"user"} />
 		</main>
 	);

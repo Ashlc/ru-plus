@@ -2,44 +2,41 @@ import React from "react";
 //import "primeicons/primeicons.css";
 
 function Extract() {
-	const extract = [
-		{
-			key: 1,
-			meal: "LUNCH",
-			date: "21/07",
-			hour: "12:47",
-		},
-		{
-			key: 2,
-			meal: "LUNCH",
-			date: "19/07",
-			hour: "12:54",
-		},
-		{
-			key: 3,
-			meal: "LUNCH",
-			date: "18/07",
-			hour: "12:55",
-		},
-		{
-			key: 4,
-			meal: "LUNCH",
-			date: "17/07",
-			hour: "12:34",
-		},
-		{
-			key: 5,
-			meal: "LUNCH",
-			date: "16/07",
-			hour: "12:13",
-		},
-		{
-			key: 6,
-			meal: "LUNCH",
-			date: "15/07",
-			hour: "12:48",
-		},
-	];
+	const [extract, setExtract] = React.useState([]);
+
+	const getTransactions = async () => {
+		// ta pegando a mesma carteira td vez
+		const id = localStorage.getItem("idUser");
+
+		const response = await fetch(`http://localhost:3001/transaction/${id}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+		const data = await response.json();
+		console.log(data);
+		setExtract(data);
+	};
+
+	React.useEffect(() => {
+		getTransactions();
+	}, []);
+
+	const parseDate = (date) => {
+		const newDate = new Date(date);
+		const day = newDate.getDate();
+		const month = newDate.getMonth() + 1;
+		const year = newDate.getFullYear();
+		return `${day}/${month}/${year}`;
+	};
+
+	const parseHour = (date) => {
+		const newDate = new Date(date);
+		const hour = newDate.getHours();
+		const minutes = newDate.getMinutes();
+		return `${hour}:${minutes}`;
+	};
 
 	const fields = extract.map((e) => (
 		<table
@@ -47,9 +44,9 @@ function Extract() {
 			className="table-auto w-full px-4 border-separate border-spacing-y-2 border-spacing-x-2 text-sm">
 			<tbody>
 				<tr className="text-justify">
-					<td className="font-medium">{e.meal}</td>
-					<td className="">{e.date}</td>
-					<td className="w-1/5 text-right">{e.hour}</td>
+					<td className="w-6/12 font-medium">{e.mealName}</td>
+					<td className="">{parseDate(e.createdAt)}</td>
+					<td className="w-1/5 text-right">{parseHour(e.createdAt)}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -67,7 +64,15 @@ function Extract() {
 					<i className="pi pi-arrow-circle-right absolute top-5 right-5 text-silver hover:text-stdblue" />
 				</a>
 			</div>
-			{fields}
+			{extract ? (
+				fields
+			) : (
+				<div className="flex flex-col gap-10 tall:gap-16">
+					<p className="font-medium text-midnight">
+						Nenhuma transação realizada.
+					</p>
+				</div>
+			)}
 		</div>
 	);
 }

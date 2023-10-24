@@ -5,27 +5,25 @@ import logo from "../../assets/RUPLUS.svg";
 import Button from "../../components/Button/Button";
 import { Toast } from "primereact/toast";
 
-
 function Landing() {
 	const navigate = useNavigate();
-	const [email, setEmail]	= useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const toast = useRef(null);
 
-	useEffect(()=>{
+	useEffect(() => {
 		const listener = (e) => {
-			if(e.code === "Enter" || e.code === "NumpadEnter") handleLogIn();
-		}
+			if (e.code === "Enter" || e.code === "NumpadEnter") handleLogIn();
+		};
 
 		document.addEventListener("keydown", listener);
 		return () => {
 			document.removeEventListener("keydown", listener);
-		}
-	})
-	
-	
-	const handleLogIn = async () => {		
-		if(email === "" || password === "") {
+		};
+	});
+
+	const handleLogIn = async () => {
+		if (email === "" || password === "") {
 			toast.current.show({
 				severity: "error",
 				summary: "Erro",
@@ -34,39 +32,40 @@ function Landing() {
 			});
 			return;
 		}
-		
+
 		toast.current.clear();
-		
+
 		try {
 			const values = { email: email, password: password };
-			const response = await fetch('http://localhost:3001/user/login', {	
-				method: 'POST',
+			const response = await fetch("http://localhost:3001/user/login", {
+				method: "POST",
 				headers: {
-					'Content-Type': 'application/json'
+					"Content-Type": "application/json",
 				},
 				body: JSON.stringify(values),
 			});
-			if(response.status !== 200) {
+			if (response.status !== 200) {
 				console.log("Error.");
 			} else {
-				navigate('/home');
+				navigate("/home");
 			}
 			const data = await response.json();
-			if(data.error) {
+			if (data.error) {
 				toast.current.show({
 					severity: "error",
 					summary: "Erro",
-					detail: 'Email ou senha incorretos',
+					detail: "Email ou senha incorretos",
 					life: 8000,
-				})
+				});
 			}
-			localStorage.setItem('idUser', data.id);
-			localStorage.setItem('idWallet', data.wallet[0].id);
+			localStorage.setItem("idUser", data.id);
+			localStorage.setItem("idWallet", data.wallet[0].id);
+			localStorage.setItem("name", data.name);
 		} catch (error) {
 			toast.current.show({
 				severity: "error",
 				summary: "Erro",
-				detail: 'Problemas com o servidor, tente novamente mais tarde',
+				detail: "Problemas com o servidor, tente novamente mais tarde",
 				life: 8000,
 			});
 		}

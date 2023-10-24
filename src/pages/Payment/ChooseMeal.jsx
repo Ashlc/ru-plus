@@ -1,12 +1,35 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import Navigator from "../../components/Navigator/Navigator";
 import { useNavigate } from "react-router-dom";
 
 function ChooseMeal() {
 	const navigate = useNavigate();
 
+	const [balance, setBalance] = useState(0);
+
+	const getData = async () => {
+		const id = localStorage.getItem("idUser");
+		const response = await fetch(`http://localhost:3001/user/getUser`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ id }),
+		});
+		const data = await response.json();
+		setBalance(data.wallet[0].balance);
+	};
+
+	useEffect(() => {
+		getData();
+	}, []);
+
 	const handleClickSoup = async () => {
 		const price = 1;
+
+		if (balance < price) navigate("/pagamento/erro");
+
 		const mealType = "SOPA OU BOLO";
 		const idUser = localStorage.getItem("idUser");
 		const idWallet = localStorage.getItem("idWallet");
@@ -29,7 +52,7 @@ function ChooseMeal() {
 
 			console.log(response);
 		} catch (error) {
-			console.log(error);
+			console.log(error.message);
 		}
 
 		console.log(data);
@@ -37,13 +60,15 @@ function ChooseMeal() {
 
 	const handleClickDinner = async () => {
 		const price = 3;
+
+		if (balance < price) navigate("/pagamento/erro");
+
 		const mealType = "REGIONAL";
 		const idUser = localStorage.getItem("idUser");
 		const idWallet = localStorage.getItem("idWallet");
-		const idMeal = localStorage.getItem("idMeal");
 		navigate("/pagamento/", { state: { price, mealType } });
 
-		const data = { price, mealType, idUser, idWallet, idMeal };
+		const data = { price, mealType, idUser, idWallet };
 		console.log(data);
 
 		try {
@@ -60,7 +85,7 @@ function ChooseMeal() {
 
 			console.log(response);
 		} catch (error) {
-			console.log(error);
+			console.log(error.message);
 		}
 
 		console.log(data);

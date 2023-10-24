@@ -18,6 +18,7 @@ function Handler() {
 	const time = currentTime.getHours() * 60 + currentTime.getMinutes();
 
 	navigate("/pagamento/jantar");
+
 	/*690 às 840 e das 1020 às 1170*/
 
 	// if (time >= 690 && time <= 840) {

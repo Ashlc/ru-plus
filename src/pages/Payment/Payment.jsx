@@ -1,11 +1,13 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import QRCode from "./QRCodeComponent";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PriceNMeal from "./Price&Meal";
 import Navigator from "../../components/Navigator/Navigator";
 
 function Payment1() {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const price = location.state.price;
 	const mealType = location.state.mealType;
 

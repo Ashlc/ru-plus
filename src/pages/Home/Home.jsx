@@ -8,17 +8,26 @@ import icon from "../../assets/RUPLUSBLUE.svg";
 
 function Home() {
 	const navigate = useNavigate();
+	const name = localStorage.getItem("name");
 	const navigateInsert = () => {
 		navigate("/inserir");
 	};
 
 	return (
 		<main className="relative h-screen flex flex-col justify-center items-center gap-5 pb-14 tall:pb-10">
-			<img
-				src={icon}
-				alt=""
-				className="absolute h-6 tall:h-8 hidden tall:block top-14 left-14"
-			/>
+			<div className="justify-between w-4/5 hidden tall:flex absolute top-14">
+				<img src={icon} alt="" className="h-6 tall:h-8" />
+				{name ? (
+					<div className="flex w-fit gap-2">
+						<p className="text-stdblue text-2xl tall:text-3xl">{"Olá, "}</p>
+						<p className="text-stdblue text-2xl tall:text-3xl font-bold">
+							{name}
+						</p>
+					</div>
+				) : (
+					<div></div>
+				)}
+			</div>
 			<div className="w-4/5 flex flex-col justify-center items-center gap-8 h-full">
 				<Saldo />
 				<Extract />
