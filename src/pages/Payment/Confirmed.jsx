@@ -1,14 +1,15 @@
 import React from "react";
 import checkmark from "../../assets/CHECKMARK.svg"
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PriceNMeal from "./Price&Meal";
 import Back from "../../components/Back/Back"
 
 
 function Confirmed() {
-  {/* When we make the place where this information comes from we will change this!! */ }
-  const mealType = "Almoço";
-  const price = 3.00;
+  const location = useLocation();
+  const mealType = location.state.mealType;
+  const price = location.state.price;
 
   return (
     <div className="flex justify-center w-full h-screen bg-moonstone">

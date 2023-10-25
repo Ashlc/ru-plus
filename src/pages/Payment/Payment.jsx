@@ -37,9 +37,9 @@ function Payment1() {
 				);
 				if (response.ok) {
 					setTimeout(() => {
-						navigate("/pagamento/confirmado");
+						navigate("/pagamento/confirmado", {state: {price, mealType}});
 						return;
-					}, 2000);
+					}, 1500);
 				}
 			} catch (error) {
 				console.log(error.message);

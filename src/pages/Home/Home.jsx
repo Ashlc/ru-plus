@@ -28,15 +28,17 @@ function Home() {
 					<div></div>
 				)}
 			</div>
-			<div className="w-4/5 flex flex-col justify-center items-center gap-8 h-full">
+			<div className="w-4/5 absolute flex flex-col items-center tall:top-32 top-10 gap-8 h-full">
 				<Saldo />
 				<Extract />
-				<IconButton
-					text="INSERIR CRÉDITOS"
-					icon="pi-credit-card"
-					func={navigateInsert}
-				/>
 			</div>
+				<div className="w-4/5 absolute bottom-32 tall:bottom-40">
+					<IconButton
+						text="INSERIR CRÉDITOS"
+						icon="pi-credit-card"
+						func={navigateInsert}
+					/>
+				</div>
 			<Navigator place={"home"} />
 		</main>
 	);

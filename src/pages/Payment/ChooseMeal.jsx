@@ -48,7 +48,7 @@ function ChooseMeal() {
 								<hr className="border border-silver"></hr>
 							</div>
 							<p className="text-4xl">
-								<span className="text-silver">R$</span>
+								<span className="text-silver font-medium text-2xl mr-2">R$</span>
 								<span className="text-stdblue">1,00</span>
 							</p>
 						</div>
@@ -62,7 +62,7 @@ function ChooseMeal() {
 								<hr className="border border-silver"></hr>
 							</div>
 							<p className="text-4xl">
-								<span className="text-silver">R$</span>
+								<span className="text-silver font-medium text-2xl mr-2">R$</span>
 								<span className="text-stdblue">3,00</span>
 							</p>
 						</div>
