@@ -1,5 +1,5 @@
 import "./SignUp.css";
-import { React, useState, useRef } from "react";
+import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/RUPLUS.svg";
 import Form from "./Form";
@@ -16,6 +16,12 @@ function SignUp() {
 	const [noFile, setNoFile] = useState(false);
 
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (localStorage.getItem("idUser")) {
+			navigate("/home");
+		}
+	}, []);
 
 	const handleUpload = (e) => {
 		if (e.target.files.length !== 0) {
