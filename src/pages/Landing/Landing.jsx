@@ -11,7 +11,12 @@ function Landing() {
 	const [password, setPassword] = useState("");
 	const toast = useRef(null);
 
+
 	useEffect(() => {
+		if (localStorage.getItem("idUser")) {
+			navigate("/home");
+		}
+		
 		const listener = (e) => {
 			if (e.code === "Enter" || e.code === "NumpadEnter") handleLogIn();
 		};
